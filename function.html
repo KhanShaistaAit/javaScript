@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>JavaScript Arrays</h1>
+<h2>The filter() Method</h2>
+
+<p>Get every element in the array that has a value of 18 or more:</p>
+
+<p id="demo"></p>
+
+<script>
+const ages = [32, 33, 16, 40];
+
+document.getElementById("demo").innerHTML = ages.filter(checkAdult);
+
+function checkAdult(age) {
+  return age >= 18;
+}
+</script>
+<h2>The MAP() Method</h2>
+
+<p>Compute a new array with the full name of each person in the old array:</p>
+
+<p id="demo2"></p>
+
+<script>
+const persons = [
+  {firstname : "Malcom", lastname: "Reynolds"},
+  {firstname : "Kaylee", lastname: "Frye"},
+  {firstname : "Jayne", lastname: "Cobb"}
+];
+
+document.getElementById("demo2").innerHTML = persons.map(getFullName);
+
+function getFullName(item) {
+  return [item.firstname,item.lastname].join(" ");
+}
+</script>
+
+<h2>The sort() Method</h2>
+<p>The sort() method sorts the elements of an array in alphabetical order.</p>
+
+<p id="demo3"></p>
+
+<script>
+// Create an Array
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+
+// Sort the Array
+fruits.sort();
+
+// Display the Array
+document.getElementById("demo3").innerHTML = fruits;
+</script>
+
+</body>
+</html>

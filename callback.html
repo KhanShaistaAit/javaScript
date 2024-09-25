@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>callback</title>
+</head>
+<body>
+    <script>
+        const perOne=(friend,callfriend)=>{
+            console.log("I am busy right now " + friend +" I will call you back.");
+            callfriend();
+        }
+        const perTwo=()=>{
+            console.log('Hey whats up.I call back you.');
+        }
+        perOne("Sarah",perTwo);
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation Example</title>
+    <style>
+        .error {
+            color: red;
+            font-size: 0.9em;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Form Validation Example</h1>
+
+    <form id="myForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <span id="usernameError" class="error hidden">Username is required and must be at least 3 characters long.</span>
+        <br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <span id="emailError" class="error hidden">Please enter a valid email address.</span>
+        <br><br>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" min="1" max="120" required>
+        <span id="ageError" class="error hidden">Age must be between 1 and 120.</span>
+        <br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <p id="formMessage" class="hidden">Form submitted successfully!</p>
+
+    <script src="validate.js"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Task Management System</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Task Management System</h1>
+        <form id="taskForm">
+            <input type="text" id="title" placeholder="Task Title" required>
+            <textarea id="description" placeholder="Description"></textarea>
+            <input type="date" id="dueDate" required>
+            <select id="priority">
+                <option value="1">Low</option>
+                <option value="2">Medium</option>
+                <option value="3">High</option>
+                <option value="4">Very High</option>
+                <option value="5">Critical</option>
+            </select>
+            <button type="submit">Add Task</button>
+        </form>
+        <div id="taskList"></div>
+    </div>
+    <script>
+        document.getElementById('taskForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const title = document.getElementById('title').value;
+    const description = document.getElementById('description').value;
+    const dueDate = document.getElementById('dueDate').value;
+    const priority = document.getElementById('priority').value;
+
+    const response = await fetch('api/task', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ Title: title, Description: description, DueDate: dueDate, Priority: priority, Status: 'Pending' })
+    });
+
+    if (response.ok) {
+        alert('Task added successfully!');
+        document.getElementById('taskForm').reset();
+        loadTasks(); // Reload tasks after adding
+    } else {
+        alert('Error adding task!');
+    }
+});
+
+async function loadTasks() {
+    const response = await fetch('api/task');
+    const tasks = await response.json();
+    const taskList = document.getElementById('taskList');
+    taskList.innerHTML = '';
+
+    tasks.forEach(task => {
+        const taskItem = document.createElement('div');
+        taskItem.classList.add('task');
+        taskItem.innerHTML = `
+            <h3>${task.Title}</h3>
+            <p>${task.Description}</p>
+            <p>Due: ${task.DueDate}</p>
+            <p>Priority: ${task.Priority}</p>
+            <p>Status: ${task.Status}</p>
+        `;
+        taskList.appendChild(taskItem);
+    });
+}
+
+// Call loadTasks when the page loads
+document.addEventListener('DOMContentLoaded', loadTasks);
+
+    </script>
+</body>
+</html>

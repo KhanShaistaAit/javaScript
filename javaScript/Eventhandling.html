@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Handling Example</title>
+    <style>
+        .hover-effect {
+            background-color: lightblue;
+        }
+        .clicked {
+            color: red;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Event Handling Example</h1>
+
+    <!-- Button for click event -->
+    <button id="clickButton">Click Me!</button>
+    
+    <!-- Element for mouseover event -->
+    <div id="mouseoverDiv">Hover over me!</div>
+    
+    <!-- Form for submission event -->
+    <form id="myForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <button type="submit">Submit</button>
+    </form>
+    
+    <!-- Message to display form submission -->
+    <p id="formMessage" class="hidden">Form submitted successfully!</p>
+
+    <script src="handlingevent.js"></script>
+</body>
+</html>

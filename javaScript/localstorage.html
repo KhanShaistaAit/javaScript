@@ -1,0 +1,14 @@
+<html>
+    <body>
+        
+        <h1>The window Object</h1>
+        <h2>the localStorage Property</h2>
+
+        <p>Saved name is : </p>
+        <p id="demo"></p>
+        <script>
+            localStorage.setItem("lastname","Khan");
+            document.getElementById("demo").innerHTML=localStorage.getItem("lastname");
+        </script>
+    </body>
+</html>

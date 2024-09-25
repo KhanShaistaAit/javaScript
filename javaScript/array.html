@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>JavaScript Arrays</h1>
+<h2>The Push() Method</h2>
+
+<p>push() adds new items to the end of an array:</p>
+
+<p id="demo"></p>
+
+<script>
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.push("Kiwi");
+
+document.getElementById("demo").innerHTML = fruits;
+</script>
+
+<h2>The pop() Method</h2>
+<p>pop() reomves the last element of an array.</p>
+<p id="demo2"></p>
+<script>
+    const fruits1=["Banana","Orange","Apple","Mango"];
+    fruits1.pop();
+    document.getElementById("demo2").innerHTML = fruits1;
+
+</script>
+
+<h2>Array elements are updated using their index number : </h2>
+<p id="demo3"></p>
+<p id="demo4"></p>
+
+<script>
+    const fruits3 = ["Banana", "Orange", "Apple", "Mango"];
+document.getElementById("demo3").innerHTML = fruits3;
+fruits3[0] = "Kiwi";
+document.getElementById("demo4").innerHTML = fruits3;
+</script>
+
+</body>
+</html>

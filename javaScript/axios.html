@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Data with Axios</title>
+</head>
+<body>
+    <h1>Fetch Data from API using Axios</h1>
+    <button id="fetchButton">Fetch Data</button>
+    <pre id="dataOutput"></pre>
+    <script>
+
+    <!-- Link to the external JavaScript file -->
+    // Function to fetch data from the API
+async function fetchData() {
+    const apiUrl = 'https://jsonplaceholder.typicode.com/posts'; // Replace with your API URL
+
+    try {
+        // Make the GET request
+        const response = await axios.get(apiUrl);
+        
+        // Access the data from the response
+        const data = response.data;
+        
+        // Display the data in the <pre> element
+        document.getElementById('dataOutput').textContent = JSON.stringify(data, null, 2);
+    } catch (error) {
+        // Handle any errors
+        document.getElementById('dataOutput').textContent = 'Error: ' + error.message;
+    }
+}
+
+// Add event listener to the button
+document.getElementById('fetchButton').addEventListener('click', fetchData);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<html>
+<body>
+  <p id = "output"> </p>
+  <script>
+    let output = document.getElementById("output");
+    function shoppingCart() {
+      const cartItems = [];
+      function add(item) {
+        cartItems.push(item);
+        output.innerHTML += `${item.name} added to the cart. <br>`;
+      }
+      function remove(itemName) {
+        const index = cartItems.findIndex(item => item.name === itemName);
+        if (index !== -1) {
+          const removedItem = cartItems.splice(index, 1)[0];
+          output.innerHTML += `${removedItem.name} removed from the cart. <br>`;
+        } else {
+          output.innerHTML += `Item ${itemName} not found in the cart. <br>`;
+        }
+      }
+      return {
+        add,
+        remove,
+      };
+    }
+
+    // Defining items
+    const item1 = { name: 'Car', price: 1000000 };
+    const item2 = { name: 'Bike', price: 100000 };
+    // Create a new Shopping cart
+    const cart = shoppingCart();
+    // Adding items to the cart
+    cart.add(item1);
+    cart.add(item2);
+    // Remove bike from the cart
+    cart.remove('Bike');
+  </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>The setTimeout() Method</h2>
+
+<p>Wait 5 seconds for the greeting:</p>
+<h2 id="demo"></h2>
+
+<script>
+const myTimeout = setTimeout(myGreeting, 5000);
+
+function myGreeting() {
+  document.getElementById("demo").innerHTML = "Its a Happy Day!"
+}
+</script>
+<h2>Set Interval</h2>
+<h2 id="demo2"> </h2>
+
+<script>
+    const element=document.getElementById("demo2");
+    setInterval(function() {element.innerHTML+="1 second"},1000);
+        
+</script>
+</body>
+</html>

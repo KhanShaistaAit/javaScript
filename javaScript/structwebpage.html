@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Fetched Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin: 20px;
+        }
+        .data-container {
+            margin-top: 20px;
+        }
+        .data-item {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Display Data from API</h1>
+        <button id="fetchButton">Fetch Data</button>
+        <div class="data-container" id="dataOutput"></div>
+    </div>
+
+    <script>
+        // Function to fetch data from the API
+async function fetchData() {
+    const apiUrl = 'https://jsonplaceholder.typicode.com/posts'; // Replace with your API URL
+
+    try {
+        // Make the GET request
+        const response = await fetch(apiUrl);
+        
+        // Access the data from the response
+        const data = response.data;
+
+        // Generate HTML to display the data
+        const dataOutput = document.getElementById('dataOutput');
+        dataOutput.innerHTML = ''; // Clear previous data
+
+        if (Array.isArray(data)) {
+            // Create a table to display the data
+            let table = '<table><thead><tr>';
+            // Add table headers
+            Object.keys(data[0]).forEach(key => {
+                table += `<th>${key}</th>`;
+            });
+            table += '</tr></thead><tbody>';
+
+            // Add table rows
+            data.forEach(item => {
+                table += '<tr>';
+                Object.values(item).forEach(value => {
+                    table += `<td>${value}</td>`;
+                });
+                table += '</tr>';
+            });
+            table += '</tbody></table>';
+
+            // Append table to the dataOutput element
+            dataOutput.innerHTML = table;
+        } else {
+            // Handle non-array data
+            dataOutput.innerHTML = '<p>Data format not recognized.</p>';
+        }
+    } catch (error) {
+        // Handle any errors
+        document.getElementById('dataOutput').innerHTML = 'Error: ' + error.message;
+    }
+}
+
+// Add event listener to the button
+document.getElementById('fetchButton').addEventListener('click', fetchData);
+
+    </script>
+</body>
+</html>
